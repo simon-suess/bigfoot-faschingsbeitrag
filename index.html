@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Faschingsbeitrag · BIG-FOOT CLUB Offingen</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="calculator.js" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="container">
+        <img class="club-logo" src="BigFoot_Logo_RGB_S.png" width="1000" height="640" alt="BIG-FOOT CLUB Offingen">
+        <div>
+          <h1>Faschingsbeitrag</h1>
+          <p>Wähle deine Umzüge und Kostümteile. Dein Beitrag wird direkt berechnet.</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="container layout">
+      <noscript><p>Bitte aktiviere JavaScript, um deinen Beitrag zu berechnen.</p></noscript>
+      <form id="choices" aria-label="Auswahl für deinen Faschingsbeitrag">
+        <fieldset class="card">
+          <legend>1. Wie viele Umzüge fährst du mit?</legend>
+          <label class="choice">
+            <input type="radio" name="route" value="full">
+            <span>Vollfahrer <small>Alle Umzüge mitfahren</small></span>
+            <strong data-price="full"></strong>
+          </label>
+          <label class="choice">
+            <input type="radio" name="route" value="single">
+            <span>Einzelne Umzüge <small>Preis pro Umzug</small></span>
+            <strong data-price="single"></strong>
+          </label>
+          <label id="count-option" hidden>
+            Anzahl der Umzüge
+            <select name="count">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset class="card">
+          <legend>2. Dein Kostüm</legend>
+          <fieldset class="group">
+            <legend>Kostümvariante</legend>
+            <label class="choice"><input type="radio" name="group" value="men"> Herren</label>
+            <label class="choice"><input type="radio" name="group" value="women"> Damen</label>
+          </fieldset>
+
+          <h2>Pflichtteile</h2>
+          <p>Diese Teile werden automatisch berechnet.</p>
+          <ul class="items">
+            <li id="shirt" hidden><span>Hemd (Herren)</span><strong data-price="shirt"></strong></li>
+            <li><span>Gürtel</span><strong data-price="belt"></strong></li>
+            <li><span>Spielzeug (Hammer &amp; Co.)</span><strong data-price="toy"></strong></li>
+            <li id="overalls" hidden><span>Latzhose</span><strong data-price="overalls"></strong></li>
+          </ul>
+          <label id="overalls-option" class="choice" hidden>
+            <input type="checkbox" name="ownOveralls">
+            Ich habe schon eine Latzhose vom letzten Jahr.
+          </label>
+
+          <h2>Extras</h2>
+          <label class="choice">
+            <input type="checkbox" name="extra" value="cap">
+            <span>Gelbe Mütze</span>
+            <strong data-price="cap"></strong>
+          </label>
+          <label class="choice">
+            <input type="checkbox" name="extra" value="vest">
+            <span>BIG-FOOT CLUB Weste (ärmellos)</span>
+            <strong data-price="vest"></strong>
+          </label>
+          <label class="choice">
+            <input type="checkbox" name="extra" value="fleece">
+            <span>BIG-FOOT CLUB Fleecepullover</span>
+            <strong data-price="fleece"></strong>
+          </label>
+          <label class="choice">
+            <input type="checkbox" name="extra" value="polo">
+            <span>BIG-FOOT CLUB Polo mit Logo <small id="polo-options"></small></span>
+            <strong id="polo-price"></strong>
+          </label>
+        </fieldset>
+      </form>
+
+      <section class="card summary" aria-labelledby="summary-title">
+        <h2 id="summary-title">3. Dein Beitrag</h2>
+        <ul class="items" id="breakdown" aria-label="Zusammensetzung deines Beitrags"></ul>
+        <div class="total">
+          <label for="total">Zu zahlen</label>
+          <output id="total">–</output>
+        </div>
+        <p id="missing-choices">Wähle deine Umzüge und deine Kostümvariante, um den Gesamtbetrag zu sehen.</p>
+        <p class="payment-note">Bitte überweise deinen Beitrag bis spätestens <strong><time datetime="2026-12-16">16.12.2026</time></strong>. Die Bankverbindung findest du im angepinnten Beitrag im WhatsApp-Kanal.</p>
+
+        <label for="payer">Vor- und Nachname</label>
+        <input id="payer" type="text" autocomplete="name" placeholder="Max Muster">
+        <label for="purpose">Vorschlag für den Verwendungszweck</label>
+        <textarea id="purpose" rows="3" readonly placeholder="Erscheint, sobald du gewählt und deinen Namen eingetragen hast."></textarea>
+        <button id="copy" type="button" disabled>Verwendungszweck kopieren</button>
+        <p id="copy-status" role="status"></p>
+      </section>
+
+      <aside class="reminder">
+        <strong>Nur ein Beitragsrechner, keine Bestellung.</strong>
+        Größen und weitere Angaben klärst du bei der Anprobe vor Ort oder über das Google-Formular im WhatsApp-Kanal.
+      </aside>
+    </main>
+  </body>
+</html>
